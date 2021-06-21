@@ -505,11 +505,11 @@ h1, h2, h3, h4, h5, h6, .font-primary {
   margin: 10px;
   border: none;
   color: #fff;
-  background: #fd680e;
+  background: #568d4a;
 }
 
 #hero .php-email-form button[type="submit"]:hover {
-  background: #fd8841;
+  background: #7eb673;
 }
 
 @media (min-width: 1024px) {
@@ -538,10 +538,11 @@ h1, h2, h3, h4, h5, h6, .font-primary {
 --------------------------------------------------------------*/
 section {
   padding: 80px 0;
+  color: #08111a;
 }
 
 .section-bg {
-  background-color: #fff7f2;
+  background-color: #08111a;
 }
 
 .section-title {
@@ -622,7 +623,7 @@ section {
 
 .why-us .card-icon i {
   font-size: 32px;
-  color: #fff;
+  color: rgb(21, 38, 48);
   width: 64px;
   height: 64px;
   padding-top: 10px;
@@ -877,5 +878,5 @@ section {
   padding-top: 10px;
   text-align: center;
   font-size: 13px;
-  color: #fff;
+  color: #2f1708;
 }
