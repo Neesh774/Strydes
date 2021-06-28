@@ -4,9 +4,11 @@ import {
  } from "@chakra-ui/react"
 import {React, Fragment} from 'react';
 import LandingPage from './pages/landingPage';
+import theme from './fontTheme'
+import "@fontsource/rubik"
 function App() {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <LandingPage />
     </ChakraProvider>
   )
