@@ -16,27 +16,36 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  Avatar,
-  Stack,
-  Text
+  Text,
 } from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
+import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { FaUserAlt } from 'react-icons/fa'
 import '../index.css';
+import React from 'react';
+import {GoogleLogin, GoogleLogout} from 'react-google-login';
+
+
 export default function Simple() {
-  console.log("navbar");
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const { colorMode, toggleColorMode } = useColorMode()
+  const { colorMode, toggleColorMode } = useColorMode();
+  const [user, setUser] = React.useState();
+  const [loggedIn, setLoggedIn] = React.useState();
+  const responseGoogle = (response) => {
+    setUser(response);
+    console.log(response);
+    setLoggedIn(true);
+    window.location.assign('http://localhost:3000/dashboard')  //CHANGE
+  }
+
+  const onFailure = (response) => {
+      console.log(response);
+  }
+  const logout = (response) => {
+    setLoggedIn(false);
+    console.log(response);
+  }
   return (
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4} className="navbar-box" width="100%">
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-          <IconButton
-            size={'md'}
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-            aria-label={'Open Menu'}
-            display={{ md: 'none' }}
-            onClick={isOpen ? onClose : onOpen}
-          />
         <HStack spacing={8} alignItems={'center'}>
             <LinkBox>
                 <LinkOverlay href="/">
@@ -63,8 +72,25 @@ export default function Simple() {
                     />}
                 </MenuButton>
                 <MenuList>
-                    <MenuItem>Log in</MenuItem>
-                    <MenuItem>Sign up</MenuItem>
+                    {!loggedIn? <GoogleLogin 
+                        clientId="890338125544-hmfit6fes9ulfls1845us401pfv0muci.apps.googleusercontent.com"
+                        render={renderProps => (
+                            <MenuItem onClick={renderProps.onClick}>Log In</MenuItem>
+                        )}
+                        buttonText="Login"
+                        onSuccess={responseGoogle}
+                        onFailure={onFailure}
+                        cookiePolicy={'single_host_origin'}
+                    />: ''}
+                    {loggedIn? <GoogleLogout
+                      clientId="890338125544-hmfit6fes9ulfls1845us401pfv0muci.apps.googleusercontent.com"
+                      buttonText="Logout"
+                      render={renderProps => (
+                        <MenuItem onClick={renderProps.onClick}>Log Out</MenuItem>
+                      )}
+                      onLogoutSuccess={logout}
+                      />: ''
+                    }
                 </MenuList>
             </Menu>
           </HStack>

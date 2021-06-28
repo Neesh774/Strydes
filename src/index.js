@@ -5,12 +5,19 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ColorModeScript } from '@chakra-ui/react';
 import theme from './theme';
-ReactDOM.render(
+import { BrowserRouter as Router} from "react-router-dom";
+const routing = (
+  <Router
+      basename={"/"}
+      forceRefresh={true}
+    >
   <React.StrictMode>
     <ColorModeScript initialColorMode={theme.config.initialColorMode} />
     <App />
   </React.StrictMode>,
-  document.getElementById('root')
+  </Router>
+)
+ReactDOM.render(routing, document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
