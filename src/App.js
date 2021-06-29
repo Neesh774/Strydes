@@ -2,7 +2,7 @@ import './App.css';
 import { 
   ChakraProvider,
  } from "@chakra-ui/react"
-import {React, Fragment} from 'react';
+import {React, createContext, Fragment} from 'react';
 import LandingPage from './pages/landingPage';
 import Dashboard from './pages/dashboard';
 import theme from './fontTheme'
@@ -15,7 +15,7 @@ function App() {
         <Route exact path='/'>
           <LandingPage/>
         </Route>
-        <Route exact path='/dashboard' component={Dashboard}/>y
+        <Route exact path='/dashboard' component={Dashboard}/>
       </Switch>
     </ChakraProvider>
   )
