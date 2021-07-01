@@ -47,9 +47,9 @@ export default function SimpleThreeColumns() {
             />
             <Feature
             icon={<Icon as={FcInTransit} w={10} h={10} />}
-            title={'Instant Delivery'}
+            title={'No Wasted time'}
             text={
-                'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore...'
+                'Forum posts and Blueprints will quickly be recommended to other people, to ensure that you get responses as fast as possible.'
             }
             />
         </SimpleGrid>
