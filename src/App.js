@@ -13,7 +13,7 @@ function App() {
     <ChakraProvider theme={theme}>
       <Switch>
         <Route exact path='/'>
-          <LandingPage/>
+          <LandingPage/> 
         </Route>
         <Route exact path='/dashboard' component={Dashboard}/>
       </Switch>

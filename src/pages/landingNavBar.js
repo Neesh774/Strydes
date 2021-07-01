@@ -23,16 +23,19 @@ import { FaUserAlt } from 'react-icons/fa'
 import '../index.css';
 import React from 'react';
 import {GoogleLogin, GoogleLogout} from 'react-google-login';
-
+import Cookies from 'js-cookie';
 
 export default function Simple() {
   const { colorMode, toggleColorMode } = useColorMode();
   const [user, setUser] = React.useState();
   const [loggedIn, setLoggedIn] = React.useState();
+
   const responseGoogle = (response) => {
     setUser(response);
-    console.log(response);
+    console.log(response.Ys);
     setLoggedIn(true);
+    Cookies.set('userInfo', response.Ys);
+    console.log(Cookies.get('userInfo'));
     window.location.assign('http://localhost:3000/dashboard')  //CHANGE
   }
 

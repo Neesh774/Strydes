@@ -2,10 +2,10 @@ import {
     Heading
 } from '@chakra-ui/react'
 import { Switch, Router } from 'react-router'
-
-export default function dashboard() {
-    if(window.loggedIn){
-        window.location.assign('https://localhost:3000/');
+import Cookies from 'js-cookie';
+  export default function Dashboard() {
+    if(!Cookies.get('userInfo')){
+        window.location.assign('http://localhost:3000/')
     }
     return (
         <Heading>Hello!</Heading>
