@@ -1,7 +1,6 @@
 import { ReactElement } from 'react';
 import { Box, SimpleGrid, Icon, Text, Stack, Flex, Container } from '@chakra-ui/react';
-import { FcAssistant, FcDonate, FcInTransit } from 'react-icons/fc';
-
+import { FcInTransit, FcCollaboration, FcDataBackup } from 'react-icons/fc';
 interface FeatureProps {
   title: string;
   text: string;
@@ -33,17 +32,17 @@ export default function SimpleThreeColumns() {
     <Box p={4} maxW="5xl" borderRadius="lg">
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
             <Feature
-            icon={<Icon as={FcAssistant} w={10} h={10} />}
-            title={'Lifetime Support'}
+            icon={<Icon as={FcCollaboration} w={10} h={10} />}
+            title={'Unlimited Forum Posts'}
             text={
-                'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore...'
+                'Anybody can make as many questions as they want. We don\'t place any limits on how much you can learn.'
             }
             />
             <Feature
-            icon={<Icon as={FcDonate} w={10} h={10} />}
-            title={'Unlimited Donations'}
+            icon={<Icon as={FcDataBackup} w={10} h={10} />}
+            title={'Safe and Secure'}
             text={
-                'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore...'
+                'All your personal details will be safe from attackers, and will be backed up regularly.'
             }
             />
             <Feature

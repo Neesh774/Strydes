@@ -19,14 +19,15 @@ import Features from './features.tsx';
 import React, { version } from 'react';
 import versionControl from './versioncontrol.svg';
 import forum from './forum.svg';
-import { Reveal, Zoom, Fade } from 'react-reveal';
+import Fade from 'react-reveal/Fade';
 import TripleColumnGrid from './tripleColumnGrid';
 export default function hero(){
+    
     return (
         <div>
             <VStack>
-                <Spacer/>
-                <Reveal>
+                <Spacer/>   
+                <Fade>
                     <Text fontSize="4xl" justify={'center'} align={'center'}>
                         Your one stop for collaborating.
                     </Text>
@@ -49,19 +50,21 @@ export default function hero(){
                             </VStack>
                         </Flex> 
                     </form>
-                </Reveal>
+                </Fade>
             </VStack> 
-            <SimpleGrid columns={{ base: 6, md: 2 }} spacing={10} align="center">
-                <img alt="forum" src={forum}/>
-                <img alt="version-control" src={versionControl}/>
-            </SimpleGrid>
             <VStack>
-                <Reveal>
+            <Flex align="center" maxW="45%" justify="center">
+                <Fade>
+                    <img alt="forum" src={forum}/>
+                    <img alt="version-control" src={versionControl}/>
+                </Fade>
+            </Flex>
+                <Fade>
                     <Features/>
-                </Reveal>
-                <Reveal>
+                </Fade>
+                <Fade>
                     <TripleColumnGrid />
-                </Reveal>
+                </Fade>
             </VStack>
       </div>
     )
