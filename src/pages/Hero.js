@@ -21,6 +21,7 @@ import versionControl from './versioncontrol.svg';
 import forum from './forum.svg';
 import Fade from 'react-reveal/Fade';
 import TripleColumnGrid from './tripleColumnGrid';
+import Creators from './creators'
 export default function hero(){
     
     return (
@@ -61,9 +62,8 @@ export default function hero(){
             </Flex>
                 <Fade>
                     <Features/>
-                </Fade>
-                <Fade>
                     <TripleColumnGrid />
+                    <Creators />
                 </Fade>
             </VStack>
       </div>
