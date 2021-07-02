@@ -2,7 +2,7 @@ import './App.css';
 import { 
   ChakraProvider,
  } from "@chakra-ui/react"
-import {React, createContext, Fragment} from 'react';
+import {React} from 'react';
 import LandingPage from './pages/landingPage';
 import Dashboard from './pages/dashboard';
 import theme from './fontTheme'

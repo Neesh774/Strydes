@@ -1,22 +1,16 @@
 import {
-    Image,
-    Box,
-    Container,
     Flex,
-    Stack,
     Text,
     HStack,
     Input,
     FormLabel,
     FormControl,
-    SimpleGrid,
-    FormHelperText,
     Button,
     Spacer,
     VStack
 } from '@chakra-ui/react'
 import Features from './features.tsx';
-import React, { version } from 'react';
+import React from 'react';
 import versionControl from './versioncontrol.svg';
 import forum from './forum.svg';
 import Fade from 'react-reveal/Fade';

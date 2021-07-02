@@ -2,14 +2,11 @@ import {
   Box,
   Flex,
   HStack,
-  Link,
   LinkBox,
   LinkOverlay,
   IconButton,
   Icon,
-  Button,
   Image,
-  useDisclosure,
   useColorModeValue,
   useColorMode,
   Menu,
@@ -27,7 +24,7 @@ import Cookies from 'js-cookie';
 
 export default function Simple() {
   const { colorMode, toggleColorMode } = useColorMode();
-  const [user, setUser] = React.useState();
+  const [setUser] = React.useState();
   const [loggedIn, setLoggedIn] = React.useState();
 
   const responseGoogle = (response) => {
