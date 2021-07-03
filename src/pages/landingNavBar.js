@@ -22,18 +22,23 @@ import React from 'react';
 import {GoogleLogin, GoogleLogout} from 'react-google-login';
 import Cookies from 'js-cookie';
 
+import { GlobalContext } from '../GlobalState';
+
+import { useContext } from 'react';
+
 export default function Simple() {
+  const { setUser } = useContext(GlobalContext);
   const { colorMode, toggleColorMode } = useColorMode();
-  const [setUser] = React.useState();
   const [loggedIn, setLoggedIn] = React.useState();
 
   const responseGoogle = (response) => {
     setUser(response);
     console.log(response.Ys);
     setLoggedIn(true);
+    setUser(response.Ys);
     Cookies.set('userInfo', response.Ys);
     console.log(Cookies.get('userInfo'));
-    window.location.assign('http://localhost:3000/dashboard')  //CHANGE
+    window.location.href('http://localhost:3000/dashboard')  //CHANGE
   }
 
   const onFailure = (response) => {

@@ -2,10 +2,11 @@ import {
     Heading
 } from '@chakra-ui/react'
 import Cookies from 'js-cookie';
+import { GlobalContext } from '../GlobalState';
+import { useContext } from 'react';
   export default function Dashboard() {
-    if(!Cookies.get('userInfo')){
-        window.location.assign('http://localhost:3000/')
-    }
+    const { user } = useContext(GlobalContext);
+    
     return (
         <Heading>Hello!</Heading>
     )

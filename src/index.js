@@ -14,7 +14,7 @@ const routing = (
   <React.StrictMode>
     <ColorModeScript initialColorMode={theme.config.initialColorMode} />
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
   </Router>
 )
 ReactDOM.render(routing, document.getElementById('root')
