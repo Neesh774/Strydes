@@ -24,9 +24,6 @@ import {
           align={{ base: 'center', md: 'center' }}>
           <Text>Strydes</Text>
           <HStack>
-            <Button colorScheme="facebook" leftIcon={<FaFacebook />}>
-                Facebook
-            </Button>
             <Button colorScheme="twitter" leftIcon={<FaTwitter />}>
                 Twitter
             </Button>

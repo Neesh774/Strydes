@@ -1,6 +1,7 @@
 import {
   Box,
   Flex,
+  //Button,
   HStack,
   LinkBox,
   LinkOverlay,
@@ -21,7 +22,7 @@ import '../index.css';
 import React from 'react';
 import {GoogleLogin, GoogleLogout} from 'react-google-login';
 import Cookies from 'js-cookie';
-
+import './Hero';
 import { GlobalContext } from '../GlobalState';
 
 import { useContext } from 'react';
@@ -32,13 +33,11 @@ export default function Simple() {
   const [loggedIn, setLoggedIn] = React.useState();
 
   const responseGoogle = (response) => {
-    setUser(response);
     console.log(response.Ys);
     setLoggedIn(true);
     setUser(response.Ys);
     Cookies.set('userInfo', response.Ys);
     console.log(Cookies.get('userInfo'));
-    window.location.href('http://localhost:3000/dashboard')  //CHANGE
   }
 
   const onFailure = (response) => {
@@ -48,6 +47,11 @@ export default function Simple() {
     setLoggedIn(false);
     console.log(response);
   }
+
+  // const scrollDescription = document.getElementById('description').scrollIntoView();
+  // const scrollFeatures = document.getElementById('features').scrollIntoView();
+  // const scrollCreators = document.getElementById('creators').scrollIntoView();
+
   return (
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4} className="navbar-box" width="100%">
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
@@ -62,6 +66,15 @@ export default function Simple() {
             </LinkBox>
         </HStack>
         <HStack spacing={1}>
+            {/* <Button colorScheme="teal" variant="ghost" onClick="document.querySelector('description').scrollIntoView()">
+              Our Story
+            </Button>
+            <Button colorScheme="teal" variant="ghost" onClick="document.querySelector('features').scrollIntoView()">
+              Features
+            </Button>
+            <Button colorScheme="teal" variant="ghost" onClick="document.querySelector('creators').scrollIntoView()">
+              The Team
+            </Button> */}
             <IconButton 
                 colorScheme="gray"
                 onClick={toggleColorMode}

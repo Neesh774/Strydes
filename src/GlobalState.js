@@ -1,10 +1,12 @@
 import React, { createContext, useReducer } from 'react';
 import AppReducer from './AppReducer';
-import axios from 'axios';
+//import axios from 'axios';
 
 // Initial state
 const initialState = {
   user: null,
+  //CHANGE LOGGEDIN LATER
+  loggedIn: true,
   error: null,
   loading: true
 }
@@ -81,6 +83,7 @@ export const GlobalProvider = ({ children }) => {
     user: state.user,
     error: state.error,
     loading: state.loading,
+    loggedIn: state.loggedIn,
     setUser
   }}>
     {children}

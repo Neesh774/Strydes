@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { Box, SimpleGrid, Icon, Text, Stack, Flex } from '@chakra-ui/react';
-import { FcInTransit, FcCollaboration, FcDataBackup } from 'react-icons/fc';
+import { FcClock, FcCollaboration, FcDataBackup } from 'react-icons/fc';
 interface FeatureProps {
   title: string;
   text: string;
@@ -46,7 +46,7 @@ export default function SimpleThreeColumns() {
             }
             />
             <Feature
-            icon={<Icon as={FcInTransit} w={10} h={10} />}
+            icon={<Icon as={FcClock} w={10} h={10} />}
             title={'No Wasted time'}
             text={
                 'Forum posts and Blueprints will quickly be recommended to other people, to ensure that you get responses as fast as possible.'

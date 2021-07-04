@@ -7,23 +7,26 @@ import LandingPage from './pages/landingPage';
 import Dashboard from './pages/dashboard';
 import theme from './fontTheme'
 import "@fontsource/rubik"
-import { Route, Switch } from "react-router";
+//import { Route, Switch } from "react-router";
+
+//import PrivateRoute from './PrivateRoute';
 
 import { useContext } from 'react';
 
 import { GlobalContext, GlobalProvider } from './GlobalState';
 
 function App() {
-
-  const { user } = useContext(GlobalContext);
+  
+  const { loggedIn } = useContext(GlobalContext);
   
   return (
     <ChakraProvider theme={theme}>
       <GlobalProvider>
-        <Switch>
+        {/* <Switch>
           <Route exact path='/' component={LandingPage}/>
-          <Route exact path='/dashboard' component={Dashboard}/>
-        </Switch>
+          <PrivateRoute exact path = '/dashboard' auth={loggedIn} component={Dashboard}/>
+        </Switch> */}
+        {!loggedIn ? <LandingPage /> : <Dashboard />}
       </GlobalProvider>
     </ChakraProvider>
   )

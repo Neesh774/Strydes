@@ -61,9 +61,9 @@ export default function hero(){
                 </Fade>
             </Flex>
                 <Fade>
-                    <Features/> 
-                    <TripleColumnGrid />
-                    <Creators />
+                    <Features id="description"/> 
+                    <TripleColumnGrid id="features"/>
+                    <Creators id="creators"/>
                 </Fade>
             </VStack>
       </div>

@@ -2,8 +2,9 @@ export default (state, action) => {
     switch(action.type) {
       case 'INITIALIZE_USER':
         return {
-          ...state,
-          user: action.payload
+          user: action.payload,
+          loggedIn: true,
+          ...state
         }
     //   case 'DELETE_TRANSACTION':
     //     return {
