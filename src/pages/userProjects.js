@@ -23,7 +23,16 @@ import {
     ModalHeader,
     chakra,
     Textarea,
-    Input
+    Input,
+    Popover,
+    PopoverTrigger,
+    PopoverContent,
+    PopoverHeader,
+    PopoverBody,
+    PopoverFooter,
+    PopoverArrow,
+    PopoverCloseButton,
+    Avatar
 } from '@chakra-ui/react'
 import empty from './empty.svg'
 import { BsPlus } from 'react-icons/bs';
@@ -88,9 +97,42 @@ export default function DashboardProjects() {
                     {desc}
                 </Text>
                 <Flex alignItems="center" py="9px">
-                    <Button colorScheme="telegram" variant="solid" size="sm">
-                        View Blueprint
-                    </Button>
+                <Popover
+                placement="right"
+                >
+                        <PopoverTrigger>
+                        <Button colorScheme="telegram" variant="solid" size="sm">
+                            View Blueprint
+                        </Button>
+                        </PopoverTrigger>
+                        <PopoverContent
+                        bg={useColorModeValue('gray.300', 'gray.600')}
+                        >
+                            <PopoverCloseButton />
+                            <PopoverHeader>
+                                <Flex direction="row" alignItems="center">
+                                    <Avatar name="Neesh K." src="https://cdn.discordapp.com/avatars/297504183282565130/a_b8f783208215a189f6ba8962bd25c025.webp" size="sm"/>
+                                    <Text fontSize="lg" >Neesh K.</Text>
+                                </Flex>
+                            </PopoverHeader>
+                            <PopoverBody>
+                                <Heading fontSize="xl">{name}</Heading>
+                                <Text
+                                fontSize="md"
+                                mt={2}
+                                >{desc}</Text>
+                            </PopoverBody>
+                            <PopoverFooter>
+                            <Text
+                                color={useColorModeValue("gray.500", "gray.500")}
+                                textTransform="uppercase"
+                                fontSize="sm"
+                            >
+                                {createdAt} • {members} members
+                            </Text>
+                            </PopoverFooter>
+                        </PopoverContent>
+                    </Popover>
                 </Flex>
             </Box>
         )

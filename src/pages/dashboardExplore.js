@@ -3,6 +3,7 @@ import '../index.css';
 import {
     Box,
     Heading,
+    Avatar,
     Text,
     IconButton,
     Icon,
@@ -15,7 +16,15 @@ import {
     Menu,
     MenuItem,
     MenuButton,
-    MenuList
+    MenuList,
+    Popover,
+    PopoverTrigger,
+    PopoverContent,
+    PopoverHeader,
+    PopoverBody,
+    PopoverFooter,
+    PopoverArrow,
+    PopoverCloseButton,
 } from '@chakra-ui/react'
 import empty from './empty.svg'
 import { BsThreeDots, BsFillExclamationTriangleFill } from 'react-icons/bs';
@@ -27,6 +36,7 @@ export default function DashboardProjects() {
         {
             owner: "Neesh K.",
             name: "Discord Classroom",
+            avatar: "https://cdn.discordapp.com/avatars/297504183282565130/a_b8f783208215a189f6ba8962bd25c025.webp",
             desc: "A simple way to streamline your communication with teachers.",
             createdAt: "2019-09-27",
             members: 5
@@ -34,6 +44,7 @@ export default function DashboardProjects() {
         {
             owner: "Srihan M.",
             name: "Codetta",
+            avatar: "https://media.discordapp.net/attachments/764571615630589975/860178385606148156/image0.jpg?width=636&height=748",
             desc: "The end of all your code compilation needs.",
             createdAt: "2020-03-14",
             members: 18
@@ -41,12 +52,13 @@ export default function DashboardProjects() {
         {
             owner: "Eddie J.",
             name: "Halfnote",
+            avatar: "https://media.discordapp.net/attachments/764571615630589975/860190419476545606/Edward_Jin_Photo.jpg?width=636&height=563",
             desc: "Say hello to the solution for your lack of music practice.",
             createdAt: "2005-11-05",
             members: 2
         },
     ]
-    const Card = ({owner, name, desc, createdAt, members}) =>{
+    const Card = ({owner, name, desc, createdAt, members, avatar}) =>{
         return (
             <Box
                 w="full"
@@ -108,9 +120,42 @@ export default function DashboardProjects() {
                         Request to Join
                     </Button>
                     <Spacer />
-                    <Button colorScheme="telegram" variant="solid" size="sm">
-                        View Blueprint
-                    </Button>
+                    <Popover
+                    placement="right"
+                    >
+                        <PopoverTrigger>
+                        <Button colorScheme="telegram" variant="solid" size="sm">
+                            View Blueprint
+                        </Button>
+                        </PopoverTrigger>
+                        <PopoverContent
+                         bg={useColorModeValue('gray.300', 'gray.600')}
+                        >
+                            <PopoverCloseButton />
+                            <PopoverHeader>
+                                <Flex direction="row" alignItems="center">
+                                    <Avatar name={owner} src={avatar} size="sm"/>
+                                    <Text fontSize="lg" >{owner}</Text>
+                                </Flex>
+                            </PopoverHeader>
+                            <PopoverBody>
+                                <Heading fontSize="xl">{name}</Heading>
+                                <Text
+                                fontSize="md"
+                                mt={2}
+                                >{desc}</Text>
+                            </PopoverBody>
+                            <PopoverFooter>
+                            <Text
+                                color={useColorModeValue("gray.500", "gray.500")}
+                                textTransform="uppercase"
+                                fontSize="sm"
+                            >
+                                {createdAt} • {members} members
+                            </Text>
+                            </PopoverFooter>
+                        </PopoverContent>
+                    </Popover>
                 </Flex>
             </Box>
         )
@@ -125,7 +170,7 @@ export default function DashboardProjects() {
                      <Text fontSize="3xl">Nothing to see here :/</Text>
                     </VStack>
                      : blueprints.map((blueprint) =>{
-                        return (<Card owner={blueprint.owner} name={blueprint.name} desc={blueprint.desc} createdAt={blueprint.createdAt} members={blueprint.members}/>)
+                        return (<Card owner={blueprint.owner} name={blueprint.name} desc={blueprint.desc} createdAt={blueprint.createdAt} members={blueprint.members} avatar={blueprint.avatar}/>)
                     })}
                 </VStack>
             </Flex>

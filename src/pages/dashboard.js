@@ -19,7 +19,7 @@ import DashboardUserProjects from './userProjects';
     return (
         <Box>
           <DashboardNavBar />  
-          <Tabs defaultIndex={1} isFitted>
+          <Tabs defaultIndex={0} isFitted>
             <Box bg={useColorModeValue('gray.300', '#131824')}>
                 <TabList>
                     <Tab py={4} m={0} _focus={{ boxShadow: "none" }}>

@@ -7,7 +7,7 @@ import {
     useColorModeValue,
     HStack
   } from '@chakra-ui/react';
-  import { FaTwitter, FaFacebook } from 'react-icons/fa';  
+  import { FaTwitter } from 'react-icons/fa';  
   
   export default function SmallWithSocial() {
     return (
