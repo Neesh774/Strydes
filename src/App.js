@@ -7,7 +7,8 @@ import LandingPage from './pages/landingPage';
 import Dashboard from './pages/dashboard';
 import theme from './fontTheme'
 import "@fontsource/rubik"
-//import { Route, Switch } from "react-router";
+import ProfilePage from "./pages/profilePage"
+import { Route, Switch } from "react-router";
 
 //import PrivateRoute from './PrivateRoute';
 
@@ -26,7 +27,8 @@ function App() {
           <Route exact path='/' component={LandingPage}/>
           <PrivateRoute exact path = '/dashboard' auth={loggedIn} component={Dashboard}/>
         </Switch> */}
-        {!loggedIn ? <LandingPage /> : <Dashboard />}
+        {!loggedIn ? <Route exact path='/' component={LandingPage}/> : <Route exact path='/dashboard' component={Dashboard}/>}
+        <Route exact path="/profile" component={ProfilePage}/>
       </GlobalProvider>
     </ChakraProvider>
   )

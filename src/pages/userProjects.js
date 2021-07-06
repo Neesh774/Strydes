@@ -30,13 +30,14 @@ import {
     PopoverHeader,
     PopoverBody,
     PopoverFooter,
-    PopoverArrow,
     PopoverCloseButton,
     Avatar
 } from '@chakra-ui/react'
 import empty from './empty.svg'
 import { BsPlus } from 'react-icons/bs';
 import React from 'react';
+import Fade from 'react-reveal/Fade';
+import Card from './userProjectCard';
 export default function DashboardProjects() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [projectName, setProjectName] = React.useState();
@@ -60,83 +61,6 @@ export default function DashboardProjects() {
             members: 2
         },
     ]
-
-    const Card = ({name, desc, createdAt, members}) =>{
-        return (
-            <Box
-                w="full"
-                maxW="4xl"
-                mx="auto"
-                px={4}
-                py={3}
-                shadow="md"
-                bg={useColorModeValue('gray.200', 'gray.700')}
-                rounded="md"
-            >
-                <Flex alignItems="center">
-                    <Text
-                        color={useColorModeValue("gray.500", "gray.500")}
-                        textTransform="uppercase"
-                        fontSize="sm"
-                    >
-                        {createdAt} • {members} members
-                    </Text>
-                    <Spacer />
-                </Flex>
-                <Heading 
-                    fontSize="xl"
-                    fontWeight="bold"
-                    mt={2}
-                >
-                    {name}
-                </Heading>
-                <Text
-                fontSize="md"
-                mt={2}
-                >
-                    {desc}
-                </Text>
-                <Flex alignItems="center" py="9px">
-                <Popover
-                placement="right"
-                >
-                        <PopoverTrigger>
-                        <Button colorScheme="telegram" variant="solid" size="sm">
-                            View Blueprint
-                        </Button>
-                        </PopoverTrigger>
-                        <PopoverContent
-                        bg={useColorModeValue('gray.300', 'gray.600')}
-                        >
-                            <PopoverCloseButton />
-                            <PopoverHeader>
-                                <Flex direction="row" alignItems="center">
-                                    <Avatar name="Neesh K." src="https://cdn.discordapp.com/avatars/297504183282565130/a_b8f783208215a189f6ba8962bd25c025.webp" size="sm"/>
-                                    <Text fontSize="lg" >Neesh K.</Text>
-                                </Flex>
-                            </PopoverHeader>
-                            <PopoverBody>
-                                <Heading fontSize="xl">{name}</Heading>
-                                <Text
-                                fontSize="md"
-                                mt={2}
-                                >{desc}</Text>
-                            </PopoverBody>
-                            <PopoverFooter>
-                            <Text
-                                color={useColorModeValue("gray.500", "gray.500")}
-                                textTransform="uppercase"
-                                fontSize="sm"
-                            >
-                                {createdAt} • {members} members
-                            </Text>
-                            </PopoverFooter>
-                        </PopoverContent>
-                    </Popover>
-                </Flex>
-            </Box>
-        )
-    }
     let handleInputChange = (e) => {
         let inputValue = e.target.value
         setProjectName(inputValue)
@@ -144,20 +68,26 @@ export default function DashboardProjects() {
     return (
         <>
         <Stack spacing="20px"> 
-            <Button leftIcon={<BsPlus />} colorScheme="telegram" maxW="15%" onClick={onOpen}>
-                Create New Blueprint
-            </Button>
+            <Fade>
+                <Button leftIcon={<BsPlus />} colorScheme="telegram" onClick={onOpen}>
+                    Create New Blueprint
+                </Button>
+            </Fade>
             <Divider/>
-            <Grid templateColumns="repeat(4, 1fr)" gap={8}>
-                {blueprints.map((blueprint) =>{
-                    return (<Card name={blueprint.name} desc={blueprint.desc} createdAt={blueprint.createdAt} members={blueprint.members}/>)
-                })}
-            </Grid>
+            <Fade>
+                <Grid templateColumns="repeat(4, 1fr)" gap={8}>
+                    {blueprints.map((blueprint) =>{
+                        return (<Card name={blueprint.name} desc={blueprint.desc} createdAt={blueprint.createdAt} members={blueprint.members}/>)
+                    })}
+                </Grid>
+            </Fade>
             {blueprints.length === 0?
-                <VStack id="empty">
-                    <Image alt="empty" src={empty} maxW="40%"/> 
-                    <Text fontSize="3xl">Nothing to see here. Create a new Blueprint with the button above!</Text>
-                </VStack>
+                <Fade>
+                    <VStack id="empty">
+                        <Image alt="empty" src={empty} maxW="40%"/> 
+                        <Text fontSize="3xl">Nothing to see here. Create a new Blueprint with the button above!</Text>
+                    </VStack>
+                </Fade>
                     : ""}
         </Stack>
         <Modal isOpen={isOpen} onClose={onClose}>

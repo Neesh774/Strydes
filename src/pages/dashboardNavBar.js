@@ -43,6 +43,7 @@ import {
                   onClick={toggleColorMode}
                   aria-label="Search database"
                   icon={colorMode === "dark" ? <MoonIcon/> : <SunIcon />}
+                  _focus={{ boxShadow: "none" }}
               />
               <Menu autoSelect={false}>
                   <MenuButton
@@ -55,8 +56,11 @@ import {
                       />}
                   </MenuButton>
                   <MenuList>
-                      <MenuItem>
+                      <MenuItem onClick={() => {window.location.assign("/profile")}}>
                         My Profile
+                      </MenuItem>
+                      <MenuItem onClick={() => {window.location.assign("/dashboard")}}>
+                        Blueprints
                       </MenuItem>
                   </MenuList>
               </Menu>

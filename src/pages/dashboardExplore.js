@@ -13,6 +13,7 @@ import {
     Flex,
     useColorModeValue,
     Spacer,
+    Divider,
     Menu,
     MenuItem,
     MenuButton,
@@ -28,7 +29,7 @@ import {
 } from '@chakra-ui/react'
 import empty from './empty.svg'
 import { BsThreeDots, BsFillExclamationTriangleFill } from 'react-icons/bs';
-
+import Fade from 'react-reveal/Fade';
 const date = require('date-and-time');
 
 export default function DashboardProjects() {
@@ -75,7 +76,7 @@ export default function DashboardProjects() {
                         color={useColorModeValue("gray.500", "gray.500")}
                         textTransform="uppercase"
                         fontSize="sm"
-                    >
+                    >   
                         {createdAt} • {members} members
                     </Text>
                     <Spacer />
@@ -129,12 +130,12 @@ export default function DashboardProjects() {
                         </Button>
                         </PopoverTrigger>
                         <PopoverContent
-                         bg={useColorModeValue('gray.300', 'gray.600')}
+                         bg={useColorModeValue('gray.100', 'gray.700')}
                         >
                             <PopoverCloseButton />
                             <PopoverHeader>
                                 <Flex direction="row" alignItems="center">
-                                    <Avatar name={owner} src={avatar} size="sm"/>
+                                    <Avatar name={owner} src={avatar} size="sm" mr="4px"/>
                                     <Text fontSize="lg" >{owner}</Text>
                                 </Flex>
                             </PopoverHeader>
@@ -163,16 +164,22 @@ export default function DashboardProjects() {
     return (
         <VStack>
             <Flex maxW="40%" justify="center" align="center">
-                <VStack padding="6px" spacing="15px">
-                    {blueprints.length === 0?
-                    <VStack id="empty">
-                     <Image alt="empty" src={empty} maxW="100%"/> 
-                     <Text fontSize="3xl">Nothing to see here :/</Text>
+                <Fade>
+                    <VStack padding="6px" spacing="15px">
+                        {blueprints.map((blueprint) =>{
+                            return (
+                                <Card owner={blueprint.owner} name={blueprint.name} desc={blueprint.desc} createdAt={blueprint.createdAt} members={blueprint.members} avatar={blueprint.avatar}/>
+                            )
+                        })}
                     </VStack>
-                     : blueprints.map((blueprint) =>{
-                        return (<Card owner={blueprint.owner} name={blueprint.name} desc={blueprint.desc} createdAt={blueprint.createdAt} members={blueprint.members} avatar={blueprint.avatar}/>)
-                    })}
-                </VStack>
+                </Fade>
+                {blueprints.length ===0?
+                    <VStack id="empty">
+                        <Image alt="empty" src={empty} maxW="100%"/> 
+                        <Text fontSize="3xl">Nothing to see here :/</Text>
+                    </VStack> 
+                    : ""
+                }
             </Flex>
         </VStack>
     )
