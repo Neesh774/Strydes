@@ -151,39 +151,6 @@ export default function ProfilePage(){
                 <ModalBody>
                     <Stack>
                         <Flex direction="column">
-                            <Text>
-                                Username
-                            </Text>
-                            <Input placeholder={userName || "What do you want other people to see you as?"} maxLength={15}/>
-                        </Flex>
-                        <Flex direction="row">
-                            <Flex direction="column" pr="3px">
-                                <Text>
-                                    First Name
-                                </Text>
-                                <Input placeholder={firstName} maxLength={15}/>
-                            </Flex>
-                            <Flex direction="column" pl="3px">
-                                <Text>
-                                    Last Name
-                                </Text>
-                                <Input placeholder={lastName} maxLength={15}/>
-                            </Flex>
-                        </Flex>
-                        <Flex direction="column">
-                            <Text>
-                                Birthday
-                            </Text>
-                            <Flex direction="row">
-                            <NumberInput max={12} min={1} mr="3px">
-                                    <NumberInputField placeholder="MM"/>
-                                </NumberInput>
-                                <NumberInput max={2014} min={1950} ml="3px">
-                                    <NumberInputField placeholder="YYYY"/>
-                                </NumberInput>
-                            </Flex>
-                        </Flex>
-                        <Flex direction="column">
                                 <Text>
                                     Description
                                 </Text>

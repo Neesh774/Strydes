@@ -28,15 +28,12 @@ import { GlobalContext } from '../GlobalState';
 import { useContext } from 'react';
 
 export default function Simple() {
-  const { setUser } = useContext(GlobalContext);
+  const { user, setUser, loggedIn } = useContext(GlobalContext);
   const { colorMode, toggleColorMode } = useColorMode();
-  const [loggedIn, setLoggedIn] = React.useState();
 
   const responseGoogle = (response) => {
     console.log(response.Ys);
-    setLoggedIn(true);
     setUser(response.Ys);
-    Cookies.set('userInfo', response.Ys);
     console.log(Cookies.get('userInfo'));
   }
 
@@ -44,7 +41,6 @@ export default function Simple() {
       console.log(response);
   }
   const logout = (response) => {
-    setLoggedIn(false);
     console.log(response);
   }
 
@@ -90,7 +86,7 @@ export default function Simple() {
                     />}
                 </MenuButton>
                 <MenuList>
-                    {!loggedIn? <GoogleLogin 
+                    {!loggedIn ? <GoogleLogin 
                         clientId="890338125544-hmfit6fes9ulfls1845us401pfv0muci.apps.googleusercontent.com"
                         render={renderProps => (
                             <MenuItem onClick={renderProps.onClick}>Log In</MenuItem>
@@ -98,9 +94,8 @@ export default function Simple() {
                         buttonText="Login"
                         onSuccess={responseGoogle}
                         onFailure={onFailure}
-                        cookiePolicy={'single_host_origin'}
                     />: ''}
-                    {loggedIn? <GoogleLogout
+                    {loggedIn ? <GoogleLogout
                       clientId="890338125544-hmfit6fes9ulfls1845us401pfv0muci.apps.googleusercontent.com"
                       buttonText="Logout"
                       render={renderProps => (

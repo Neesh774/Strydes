@@ -9,7 +9,7 @@ import theme from './fontTheme'
 import "@fontsource/rubik"
 import ProfilePage from "./pages/profilePage"
 import { Route, Switch } from "react-router";
-
+import NotFound from './pages/NotFound'
 //import PrivateRoute from './PrivateRoute';
 
 import { useContext } from 'react';
@@ -18,19 +18,21 @@ import { GlobalContext, GlobalProvider } from './GlobalState';
 
 function App() {
   
-  const { loggedIn } = useContext(GlobalContext);
+  let { loggedIn } = useContext(GlobalContext);
+
+  console.log(`App.js user logged in: ${loggedIn}`)
   
   return (
     <ChakraProvider theme={theme}>
       <GlobalProvider>
-        {/* <Switch>
-          <Route exact path='/' component={LandingPage}/>
-          <PrivateRoute exact path = '/dashboard' auth={loggedIn} component={Dashboard}/>
-        </Switch> */}
-        {!loggedIn ? <Route exact path='/' component={LandingPage}/> : <Route exact path='/dashboard' component={Dashboard}/>}
-        <Route exact path="/profile" component={ProfilePage}/>
+        <Switch>
+          {!loggedIn ? <LandingPage /> : <Dashboard/>}
+          <Route exact path="/profile" component={ProfilePage}/>
+          <Route path="*" component = {NotFound} />
+        </Switch>
       </GlobalProvider>
     </ChakraProvider>
   )
 }
+
 export default App;

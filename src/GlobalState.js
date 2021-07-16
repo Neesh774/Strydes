@@ -1,12 +1,12 @@
 import React, { createContext, useReducer } from 'react';
-import AppReducer from './AppReducer';
+import { AppReducer } from './AppReducer';
 //import axios from 'axios';
 
 // Initial state
 const initialState = {
   user: null,
   //CHANGE LOGGEDIN LATER
-  loggedIn: true,
+  loggedIn: false,
   error: null,
   loading: true
 }
@@ -16,15 +16,20 @@ export const GlobalContext = createContext(initialState);
 
 // Provider component
 export const GlobalProvider = ({ children }) => {
+
   const [state, dispatch] = useReducer(AppReducer, initialState);
+
+  console.log(state);
 
   // Actions
   function setUser(user) {
+    console.log("user logged in")
         dispatch({
             type: 'INTIALIZE_USER',
             payload: user
         })
   }
+
 //   async function getTransactions() {
 //     try {
 //       const res = await axios.get('/api/v1/transactions');

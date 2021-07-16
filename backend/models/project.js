@@ -16,5 +16,9 @@ const ProjectSchema = new mongoose.Schema({
     createdAt: {
         type: String,
         required: true
+    },
+    completed: {
+        type: Boolean,
+        required: true
     }
 })  

@@ -13,6 +13,14 @@ const UserSchema = new mongoose.Schema({
     projects: {
         type: Array,
         required: true
+    },
+    description: {
+        type: String,
+        required: false,
+    },
+    skills: {
+        type: String,
+        required: false,
     }
 })
 

@@ -1,11 +1,17 @@
-export default (state, action) => {
+export const AppReducer = (state, action) => {
     switch(action.type) {
-      case 'INITIALIZE_USER':
+      case 'INTIALIZE_USER':
         return {
+          ...state,
           user: action.payload,
-          loggedIn: true,
-          ...state
+          loading: false,
+          loggedIn: !state.loggedIn
         }
+
+        default:
+          return {
+            ...state
+          }
     //   case 'DELETE_TRANSACTION':
     //     return {
     //       ...state,
